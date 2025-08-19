@@ -404,12 +404,12 @@ apply_theme(settings['theme'])
 
 # Authentication check
 if settings.get('locked', False) and not st.session_state.auth:
-    st.markdown('<div class="main-header">🔒 NoirNotes Vault</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">🔒 DriftNotes Vault</div>', unsafe_allow_html=True)
     
     password = st.text_input("Enter vault password:", type="password")
     if st.button("Unlock"):
         # Simple password check (in real app, use proper hashing)
-        if password == settings.get('vault_password', 'noir123'):
+        if password == settings.get('vault_password', 'drift123'):
             st.session_state.auth = True
             st.rerun()
         else:
@@ -417,7 +417,7 @@ if settings.get('locked', False) and not st.session_state.auth:
     st.stop()
 
 # Header
-st.markdown('<div class="main-header">🌌 NoirNotes</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-header">🌌 DriftNotes</div>', unsafe_allow_html=True)
 
 # Sidebar
 with st.sidebar:
