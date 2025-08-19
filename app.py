@@ -491,7 +491,7 @@ with st.sidebar:
         "The secret to getting ahead is getting started. - Mark Twain",
         "Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen. - John Steinbeck",
         "Writing is thinking on paper. - William Zinsser",
-        "In the dark, all thoughts glow. - NoirNotes"
+        "In the dark, all thoughts glow. - DriftNotes"
     ]
     
     import random
@@ -813,4 +813,4 @@ with st.sidebar:
         st.caption("Add GEMINI_API_KEY to Streamlit secrets")
     
     st.markdown("---")
-    st.markdown("*NoirNotes v2.0 with AI 🌌*")
+    st.markdown("*DriftNotes v2.0 with AI 🌌*")
