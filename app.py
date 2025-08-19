@@ -30,10 +30,44 @@ def init_gemini():
         api_key = st.secrets.get("GEMINI_API_KEY")
         if api_key:
             genai.configure(api_key=api_key)
-            return genai.GenerativeModel('gemma-3-12b-it')
+            return genai.GenerativeModel('gemma-2-27b-it')
         return None
     except:
         return None
+
+def create_pdf(note):
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    styles = getSampleStyleSheet()
+    story = []
+    
+    # Title
+    title_style = ParagraphStyle(
+        'CustomTitle',
+        parent=styles['Heading1'],
+        fontSize=18,
+        spaceAfter=30,
+        textColor=colors.black
+    )
+    story.append(Paragraph(note['title'], title_style))
+    story.append(Spacer(1, 12))
+    
+    # Content
+    content_style = ParagraphStyle(
+        'CustomContent',
+        parent=styles['Normal'],
+        fontSize=11,
+        spaceAfter=12,
+        textColor=colors.black
+    )
+    
+    # Convert markdown to HTML then to PDF-compatible format
+    html_content = markdown.markdown(note['content'])
+    story.append(Paragraph(html_content, content_style))
+    
+    doc.build(story)
+    buffer.seek(0)
+    return buffer
 
 # Initialize database
 def init_db():
