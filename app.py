@@ -30,7 +30,7 @@ def init_gemini():
         api_key = st.secrets.get("GEMINI_API_KEY")
         if api_key:
             genai.configure(api_key=api_key)
-            return genai.GenerativeModel('gemma-2-27b-it')
+            return genai.GenerativeModel('gemma-3-27b-it')
         return None
     except:
         return None
