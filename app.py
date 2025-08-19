@@ -15,8 +15,8 @@ import google.generativeai as genai
 
 # Configure Streamlit page
 st.set_page_config(
-    page_title="NoirNotes 🌌",
-    page_icon="🌌",
+    page_title="DriftNotes",
+    page_icon="🌊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
