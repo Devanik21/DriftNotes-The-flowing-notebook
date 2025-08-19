@@ -1,4 +1,4 @@
-# 🖤 DriftNotes – Your Flowing Personal Notebook
+# 🌊 DriftNotes – Your Flowing Personal Notebook
 
 > *A minimalist, book-styled personal notebook built with Streamlit and TinyDB, designed exclusively for dark mode aesthetics.*
 
