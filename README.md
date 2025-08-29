@@ -5,7 +5,7 @@
 ---
 
 ## ✨ Overview
-
+ 
 **DriftNotes** is not just a note-taking app—it’s your **personal, aesthetic vault** for thoughts, snippets, and inspirations. With its **dark-only themes**, glowing typography, and lightweight storage powered by **TinyDB**, DriftNotes gives you a unique mix of elegance and simplicity. Whether you’re journaling late at night, drafting code snippets, or organizing study notes, this app makes it all feel like writing in a beautifully styled digital diary.
 
 ---
