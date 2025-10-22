@@ -21,6 +21,62 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# --- START: INITIAL APP PASSWORD PROTECTION ---
+# Initialize session state variables for authentication
+if "app_authenticated" not in st.session_state:
+    st.session_state.app_authenticated = False
+if "app_login_attempts" not in st.session_state:
+    st.session_state.app_login_attempts = 0
+
+# Define the maximum number of allowed attempts
+MAX_APP_ATTEMPTS = 3
+
+try:
+    # The password should be set in your Streamlit secrets
+    # e.g., in .streamlit/secrets.toml
+    # driftnotes_app_password = "your_secret_password"
+    correct_app_password = st.secrets["driftnotes_app_password"]
+except KeyError:
+    st.error("`driftnotes_app_password` not found in secrets.toml. Please set it to run the app.")
+    st.stop()
+
+# If not authenticated for initial app access, show the login screen.
+if not st.session_state.app_authenticated:
+    
+    # Check if the user is locked out
+    if st.session_state.app_login_attempts >= MAX_APP_ATTEMPTS:
+        st.markdown('<div style="text-align: center; margin-top: 100px;">', unsafe_allow_html=True)
+        st.error("🚫 **Access Blocked**")
+        st.warning("Too many incorrect password attempts. Please close and reopen the app to try again.")
+        st.markdown('</div>', unsafe_allow_html=True)
+        st.stop()
+
+    # Display the login form
+    st.markdown('<div style="text-align: center; margin-top: 100px;">', unsafe_allow_html=True)
+    st.markdown("<h2 style='color: #9f7aea;'>DriftNotes Login</h2>", unsafe_allow_html=True)
+    
+    password_input = st.text_input(
+        "Enter Password",
+        type="password",
+        key="app_password_input_field",
+        label_visibility="collapsed",
+        placeholder="Enter app password to unlock DriftNotes"
+    )
+    
+    if st.button("Unlock App", use_container_width=True):
+        if password_input == correct_app_password:
+            st.session_state.app_authenticated = True
+            st.session_state.app_login_attempts = 0 # Reset on success
+            st.rerun()
+        else:
+            st.session_state.app_login_attempts += 1
+            attempts_left = MAX_APP_ATTEMPTS - st.session_state.app_login_attempts
+            st.error(f"Incorrect password. You have {attempts_left} attempt(s) left.")
+            st.rerun() # Rerun to update the UI and check the lockout condition
+    st.markdown('</div>', unsafe_allow_html=True)
+    st.stop()
+# --- END: INITIAL APP PASSWORD PROTECTION ---
+
 # Database file
 DB_FILE = "noirnotes_db.json"
 
