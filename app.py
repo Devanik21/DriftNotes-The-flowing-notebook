@@ -47,7 +47,7 @@ if not st.session_state.app_authenticated:
     if st.session_state.app_login_attempts >= MAX_APP_ATTEMPTS:
         st.markdown('<div style="text-align: center; margin-top: 100px;">', unsafe_allow_html=True)
         st.error("🚫 **Access Blocked**")
-        st.warning("Too many incorrect password attempts. Please close and reopen the app to try again.")
+        st.warning("Too many incorrect password attempts.Warning!")
         st.markdown('</div>', unsafe_allow_html=True)
         st.stop()
 
