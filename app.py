@@ -491,7 +491,7 @@ with st.sidebar:
     
     # AI Settings
     if gemini_model:
-        st.markdown("### 🤖 AI Assistant")
+        st.markdown("### 🎓 AI Assistant")
         ai_enabled = st.checkbox("Enable AI Features", value=settings.get('ai_enabled', True))
         
         if ai_enabled != settings.get('ai_enabled', True):
@@ -664,7 +664,7 @@ elif st.session_state.view == 'edit':
         
         # AI assistance buttons
         if gemini_model and settings.get('ai_enabled') and content:
-            st.markdown("**🤖 AI Assistant**")
+            st.markdown("**🎓 AI Assistant**")
             col_ai1, col_ai2, col_ai3 = st.columns(3)
             
             with col_ai1:
@@ -863,9 +863,9 @@ with st.sidebar:
     
     # AI Status
     if gemini_model:
-        st.success("🤖 AI Assistant: Active")
+        st.success("🎓 AI Assistant: Active")
     else:
-        st.warning("🤖 AI Assistant: Unavailable")
+        st.warning("🎓 AI Assistant: Unavailable")
         st.caption("Add GEMINI_API_KEY to Streamlit secrets")
     
     st.markdown("---")
